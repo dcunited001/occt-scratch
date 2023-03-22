@@ -1,0 +1,23 @@
+(use-modules (guix gexp)
+             (guix packages)
+             (guix download)
+             (guix git-download)
+             (guix build-system trivial)
+             (guix build-system copy)
+             ((guix licenses #:prefix license:))
+
+             (gnu packages base)
+             (gnu packages tcl)
+             (gnu packages maths)
+             (gnu packages emacs-xyz))
+
+(package
+  (name "occt-scratch")
+  (version "0.0.1")
+  (source (local-file "."))
+  (build-system trivial-build-system)
+  (propagated-inputs opencascade-occt)
+  (home-page "")
+  (synopsis "")
+  (description "")
+  (license #f))
