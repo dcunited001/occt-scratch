@@ -29,15 +29,48 @@ Run =ls -al $GUIX_ENVIRONMENT= after loading =guix shell= to see what's there.
 + $GUIX_ENVIRONMENT/bin/draw.sh
 + $GUIX_ENVIRONMENT/bin/env.sh
 
-** OCCT Draw
-
-Running =draw.sh= will load the Gui where TCL scripts can be run.
-
-#+begin_quote
-NOTE: either some environment details need to be loaded (from custom.*.sh?) or
-some packages are missing from the =guix.scm= propagated inputs.
-#+end_quote
-
 ** OCCT Tests
 
++ The =DRAWEXE= application basically is the test harness.
 + See [[https://dev.opencascade.org/doc/overview/html/occt_user_guides__test_harness.html][Draw Test Harness]] in docs and Doxygen for [[https://dev.opencascade.org/doc/refman/html/class_draw.html][Draw class]].
+
+** OCCT Draw
+
+Running =draw.sh= starts a console and the GUI. To do so, it loads the =env.sh=,
+=custom.sh=, and =custom_gcc_64.sh= scripts, in order. In the console or GUI,
+you'll need to run =pload ALL= to load all (some?) functionality.
+
+#+begin_quote
+NOTE: either some environment details are not being properly loaded. e.g. some
+GUI interactions are not enabled. Perhaps some packages are missing from the
+=guix.scm= propagated inputs.
+#+end_quote
+
+*** TCL Commands
+
+TCL commands are entered into the console.
+
+**** Draw [[https://dev.opencascade.org/doc/overview/html/occt_user_guides__test_harness.html#occt_draw_3_1][general commands]]
+
++ pload :: load script/module
++ help :: get help on commands
++ help help :: get help on help
++ spy :: record TCL macros into a file
+
+**** [[https://dev.opencascade.org/doc/overview/html/occt_user_guides__test_harness.html#occt_draw_8][Data Exchange]]
+
+Commands for loading IGES/STEP files
+
+**** Geometry Commands
+
+This will be more interesting if data is loaded from a file
+
++ beziercurve
++ bsplinecurve
+
+*** Errors
+
+The docs mention that =$CASROOT/src/
+
+**** Clicking anything in "File" :: bgerror failed to handle background error.
+**** Clicking Samples > View Samples :: Original error: no files matched glob pattern "*.tcl"
