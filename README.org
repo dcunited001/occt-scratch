@@ -2,3 +2,5 @@
 #+AUTHOR:    David Conner
 #+EMAIL:     noreply@te.xel.io
 #+DESCRIPTION: notes
+
+repo for testing occt + org-babel
