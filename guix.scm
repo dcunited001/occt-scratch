@@ -4,7 +4,7 @@
              (guix git-download)
              (guix build-system trivial)
              (guix build-system copy)
-             ((guix licenses #:prefix license:))
+             ((guix licenses) #:prefix license:)
 
              (gnu packages base)
              (gnu packages tcl)
@@ -16,7 +16,7 @@
   (version "0.0.1")
   (source (local-file "."))
   (build-system trivial-build-system)
-  (propagated-inputs opencascade-occt)
+  (propagated-inputs (list opencascade-occt))
   (home-page "")
   (synopsis "")
   (description "")

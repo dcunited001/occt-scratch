@@ -3,4 +3,41 @@
 #+EMAIL:     noreply@te.xel.io
 #+DESCRIPTION: notes
 
-repo for testing occt + org-babel
+Repo for testing occt + emacs +org-babel. The goal is to enable loading the
+environment for passing TCL scripts to OCCT from org-mode.
+
+This should allow the generation of fairly simple shapes with simple operations
+-- but anything more complex than fillets with edge specification or simple
+boolean operations will probably require code that's unmaintainable. The idea
+behind the workflow is to use OCCT to /parametrically/ produce simple models
+which can be imported into other CAD programs.
+
+* Notes
+
+Either use =buffer-env= or =guix shell -Df guix.scm= to establish the
+environment.
+
+** OCCT Environment
+
+Run =ls -al $GUIX_ENVIRONMENT= after loading =guix shell= to see what's there.
+
+*** Env Scripts
+
++ $GUIX_ENVIRONMENT/bin/custom_gcc_64.sh
++ $GUIX_ENVIRONMENT/bin/custom.sh
++ $GUIX_ENVIRONMENT/bin/DRAWEXE
++ $GUIX_ENVIRONMENT/bin/draw.sh
++ $GUIX_ENVIRONMENT/bin/env.sh
+
+** OCCT Draw
+
+Running =draw.sh= will load the Gui where TCL scripts can be run.
+
+#+begin_quote
+NOTE: either some environment details need to be loaded (from custom.*.sh?) or
+some packages are missing from the =guix.scm= propagated inputs.
+#+end_quote
+
+** OCCT Tests
+
++ See [[https://dev.opencascade.org/doc/overview/html/occt_user_guides__test_harness.html][Draw Test Harness]] in docs and Doxygen for [[https://dev.opencascade.org/doc/refman/html/class_draw.html][Draw class]].
